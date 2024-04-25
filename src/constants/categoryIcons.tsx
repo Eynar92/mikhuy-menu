@@ -1,13 +1,13 @@
-import { FaCoffee, FaHamburger, FaPizzaSlice, FaCookie, FaBirthdayCake } from 'react-icons/fa';
-import { GiDonut } from 'react-icons/gi';
+import { LiaHamburgerSolid } from 'react-icons/lia';
+import { LuCakeSlice, LuCoffee, LuCookie, LuDonut, LuPizza } from 'react-icons/lu';
 
-const size = 32;
+const size = 36;
 
 export const categoryIcons = {
-  Café: <FaCoffee size={size} />,
-  Hamburguesas: <FaHamburger size={size} />,
-  Pizzas: <FaPizzaSlice size={size} />,
-  Donas: <GiDonut size={size} />,
-  Pasteles: <FaBirthdayCake size={size} />,
-  Galletas: <FaCookie size={size} />,
+  Café: <LuCoffee size={size} />,
+  Hamburguesas: <LiaHamburgerSolid size={size} />,
+  Pizzas: <LuPizza size={size} />,
+  Donas: <LuDonut size={size} />,
+  Pasteles: <LuCakeSlice size={size} />,
+  Galletas: <LuCookie size={size} />,
 };

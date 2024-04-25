@@ -1,6 +1,7 @@
 import { ProductCardProps } from "@/interfaces/product"
 import { formatCurrency } from "@/utils"
 import Image from "next/image"
+import { AddProductBtn } from './AddProductBtn';
 
 
 
@@ -19,12 +20,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                 <p className="mt-5 font-black text-4xl text-amber-500">
                     {formatCurrency(product.price)}
                 </p>
-                <button
-                    type="button"
-                    className="w-full p-3 mt-5 text-white font-bold bg-indigo-600 hover:bg-indigo-800 rounded-md cursor-pointer transition-colors"
-                >
-                    Agregar
-                </button>
+                <AddProductBtn
+                    product={product}
+                />
             </div>
         </div>
     )

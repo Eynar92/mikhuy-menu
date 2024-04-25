@@ -1,9 +1,22 @@
+import { prisma } from "@/lib/prisma"
 
-export default function OrderPage({ params }: { params: { category: string } }) {
+async function getProducts(category: string) {
+  const products = await prisma.product.findMany({
+    where: {
+      category: {
+        slug: category
+      }
+    }
+  });
 
-  const { category } = params
+  return products;
+}
+
+export default async function OrderPage({ params }: { params: { category: string } }) {
+
+  const products = await getProducts(params.category);
 
   return (
-    <div>{category}</div>
+    <div className="flex flex-col gap-3">{products.map(product => (<span key={product.id}>{product.name}</span>))}</div>
   )
 }

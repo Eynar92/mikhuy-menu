@@ -1,0 +1,1 @@
+export type CategoryName = 'Café' | 'Hamburguesas' | 'Pizzas' | 'Donas' | 'Pasteles' | 'Galletas';

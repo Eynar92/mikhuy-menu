@@ -5,6 +5,7 @@ import { ProductDetails } from "./ProductDetails";
 import { useMemo } from "react";
 import { formatCurrency } from "@/utils";
 import { createOrder } from "@/actions";
+import { OrderSchema } from "@/schema";
 
 export const Summary = () => {
 
@@ -12,7 +13,15 @@ export const Summary = () => {
     const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0), [order])
 
     const handleCreateOrder = async (formData: FormData) => {
-        console.log(formData.get('name'));
+        const data = {
+            name: formData.get('name'),
+        }
+
+        const result = OrderSchema.safeParse(data);
+
+        console.log(result);
+
+        return
 
         await createOrder();
     }

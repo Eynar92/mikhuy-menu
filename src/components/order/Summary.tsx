@@ -2,7 +2,7 @@
 
 import { useOrderStore } from "@/stores/order.store";
 import { ProductDetails } from "./ProductDetails";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { formatCurrency } from "@/utils";
 import { createOrder } from "@/actions";
 import { OrderSchema } from "@/schema";
@@ -12,8 +12,13 @@ export const Summary = () => {
 
     const order = useOrderStore((state) => state.order);
     const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0), [order])
+    const clearOrder = useOrderStore((state) => state.clearOrder);
+
+    const [loading, setLoading] = useState(false);
 
     const handleCreateOrder = async (formData: FormData) => {
+        setLoading(true);
+        console.log('Loading 1: ', loading);
         const data = {
             name: formData.get('name'),
             total: total,
@@ -25,7 +30,6 @@ export const Summary = () => {
             result.error.issues.forEach((issue) => {
                 toast.error(issue.message);
             });
-
             return;
         }
 
@@ -35,7 +39,11 @@ export const Summary = () => {
                 toast.error(issue.message);
             });
         }
+        console.log('Loading 2: ', loading);
 
+        toast.success('Pedido realizado correctamente');
+        clearOrder();
+        setLoading(false);
     }
 
     return (
@@ -70,8 +78,9 @@ export const Summary = () => {
 
                         <input
                             type="submit"
-                            className="py-2 w-full text-center text-white font-bold bg-black rounded uppercase cursor-pointer"
-                            value="Confirmar pedido"
+                            className="py-2 w-full text-center text-white font-bold bg-black rounded uppercase cursor-pointer disabled:bg-gray-600"
+                            value="Confirmar Pedido"
+                            disabled={loading}
                         />
                     </form>
                 </div>

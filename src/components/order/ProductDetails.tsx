@@ -20,7 +20,7 @@ export const ProductDetails = ({ item }: ProductDetailsProps) => {
     const disableIncreaseButton = useMemo(() => item.quantity === MAX_ITEMS, [item]);
 
     return (
-        <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
+        <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 animate-fade">
             <div className="space-y-4">
                 <div className="flex justify-between items-start">
                     <p className="text-xl font-bold">{item.name} </p>

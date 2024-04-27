@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { formatCurrency } from "@/utils";
 import { createOrder } from "@/actions";
 import { OrderSchema } from "@/schema";
+import { toast } from "react-toastify";
 
 export const Summary = () => {
 
@@ -15,15 +16,26 @@ export const Summary = () => {
     const handleCreateOrder = async (formData: FormData) => {
         const data = {
             name: formData.get('name'),
+            total: total,
+            order
         }
 
         const result = OrderSchema.safeParse(data);
+        if (!result.success) {
+            result.error.issues.forEach((issue) => {
+                toast.error(issue.message);
+            });
 
-        console.log(result);
+            return;
+        }
 
-        return
+        const response = await createOrder(data);
+        if (response?.errors) {
+            response.errors.forEach((issue) => {
+                toast.error(issue.message);
+            });
+        }
 
-        await createOrder();
     }
 
     return (

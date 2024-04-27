@@ -43,9 +43,10 @@ model Order {
 }
 
 model OrderProducts {
-  id      Int   @id @default(autoincrement())
-  orderId Int
-  order   Order @relation(fields: [orderId], references: [id])
+  id       Int   @id @default(autoincrement())
+  orderId  Int
+  order    Order @relation(fields: [orderId], references: [id])
+  quantity Int
 
   productId Int
   product   Product @relation(fields: [productId], references: [id])

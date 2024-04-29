@@ -1,12 +1,15 @@
 import { completeOrder } from "@/actions"
 import { OrderWithProducts } from "@/interfaces/product"
 import { formatCurrency } from "@/utils"
+import { OrderCardButton } from "./OrderCardButton"
 
 type OrderCardProps = {
     order: OrderWithProducts,
 }
 
 export const OrderCard = ({ order }: OrderCardProps) => {
+
+    // console.log(order);
 
     return (
         <section
@@ -39,10 +42,11 @@ export const OrderCard = ({ order }: OrderCardProps) => {
 
             <form action={completeOrder}>
                 <input
-                    type="submit"
-                    className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold rounded-md cursor-pointer transition-colors"
-                    value='Marcar Orden Completada'
+                    type="hidden"
+                    value={order.id}
+                    name="order_id"
                 />
+                <OrderCardButton />
             </form>
         </section>
     )

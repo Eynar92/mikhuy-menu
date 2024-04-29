@@ -26,7 +26,9 @@ export default async function OrdersPage() {
 
   return (
     <>
-      <Heading>Administrar Ordenes</Heading>
+      <div className='flex items-baseline gap-2'>
+        <Heading>Administrar Ordenes</Heading> <span>({orders.length})</span>
+      </div>
       {orders.length ? (
         <div className='grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-5 mt-5'>
           {

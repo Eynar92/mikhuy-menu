@@ -22,6 +22,7 @@ export const ProductsPagination = ({ page, totalPages }: ProductsPaginationProps
 
             {pages.map(currentPage => (
                 <Link
+                    key={currentPage}
                     href={`/admin/products?page=${currentPage}`}
                     className={`${page === currentPage ? 'font-black bg-amber-400 text-amber-800 ring-amber-400' : 'bg-white text-gray-900 ring-gray-300 hover:bg-amber-50'} px-4 py-2 text-sm ring-1 ring-inset focus:z-20 focus:outline-offset-0  transition-all`}
                 >

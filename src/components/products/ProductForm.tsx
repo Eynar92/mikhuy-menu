@@ -1,5 +1,13 @@
+import { prisma } from "@/lib/prisma"
 
-export const ProductForm = () => {
+async function getCategories() {
+    return await prisma.category.findMany();
+}
+
+export const ProductForm = async () => {
+
+    const categories = await getCategories();
+
     return (
         <>
             <div className="space-y-2">
@@ -40,6 +48,14 @@ export const ProductForm = () => {
                     name="categoryId"
                 >
                     <option value="">-- Seleccione --</option>
+                    {categories.map(category => (
+                        <option
+                            key={category.id}
+                            value={category.id}
+                        >
+                            {category.name}
+                        </option>
+                    ))}
 
                 </select>
             </div>

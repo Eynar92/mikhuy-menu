@@ -1,4 +1,4 @@
-import { AddProductForm } from "@/components/products";
+import { AddProductForm, ProductForm } from "@/components/products";
 import { Heading } from "@/components/ui";
 
 export default function NewProductPage() {
@@ -6,7 +6,9 @@ export default function NewProductPage() {
     <>
       <Heading>Nuevo Producto</Heading>
 
-      <AddProductForm />
+      <AddProductForm>
+        <ProductForm />
+      </AddProductForm>
     </>
   )
 }

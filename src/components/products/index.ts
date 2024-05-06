@@ -1,5 +1,6 @@
 export * from './AddProductBtn';
 export * from './AddProductForm';
+export * from './EditProductForm';
 export * from './ImageUpload';
 export * from './ProductCard';
 export * from './ProductForm';

@@ -1,17 +1,19 @@
 import { ProductCardProps } from "@/interfaces/product"
-import { formatCurrency } from "@/utils"
+import { formatCurrency, getImagePath } from "@/utils"
 import Image from "next/image"
 import { AddProductBtn } from './AddProductBtn';
 
 
-
 export const ProductCard = ({ product }: ProductCardProps) => {
+
+    const imagePath = getImagePath(product.image);
+
     return (
         <div className="h-full border bg-white rounded-lg overflow-hidden">
             <Image
                 width={400}
                 height={500}
-                src={`/products/${product.image}.jpg`}
+                src={imagePath}
                 alt={`Imagen platillo ${product.name}`}
                 className="w-full h-auto"
             />

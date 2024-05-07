@@ -1,3 +1,4 @@
+export * from './LatestOrderItem';
 export * from './OrderCard';
 export * from './OrderCardButton';
 export * from './ProductDetails';
